@@ -10,19 +10,36 @@
 <div class="todoList">
 <h3>Todo list</h3>
 <ul>
-  <li ng-repeat="x in todoItems | filter: x.completed==false">
+  <li ng-repeat="x in todoItems | filter: filterIncomplete">
     {{x.item}}
-    <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)">Done!<span class="glyphicon glyphicon-ok"></span></a>
-    <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)">Delete<span class="glyphicon glyphicon-remove"></span></a>
+    <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)">Done! <span class="glyphicon glyphicon-ok"></span></a>
+    <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)">Delete <span class="glyphicon glyphicon-remove"></span></a>
+    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClicked = true">Snooze <span class="glyphicon glyphicon-time"></span></a>
+    <!-- If the snooze button is press, display  -->
+    <div class= "snoozePress" ng-show="snoozeClicked">
+    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 hour')">1 hour</a>
+    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 day')">1 day</a>   
+    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 week')">1 week</a>
+    </div>
     </ul>
   </li>
 </ul>
-<div class="Finished List" ng-show="todosCompleted > 0">
+
+<div class="finishedList" ng-show="todosCompleted > 0">
   <h3>Finished Todos</h3>
   <ul>
     <li ng-repeat="x in todoItems| filter: filterCompleted">
       {{x.item}}
     </li>
   </ul>
+</div>
 
+<div class="snoozedList" ng-show="snoozed > 0">
+  <h3>Snoozed Todos</h3>
+  <ul>
+    <li ng-repeat="x in todoItems | filter: filterSnooze">
+      <p ng-mouseover="snoozeHover">{{x.item}}{{x.snoozeTime}}</p>
+      <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)">Re-activate <span class="glyphicon glyphicon-ok"></span></a>
+    </li>
+  </ul>
 </div>
