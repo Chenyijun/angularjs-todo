@@ -14,7 +14,7 @@
     {{x.item}}
     <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)">Done! <span class="glyphicon glyphicon-ok"></span></a>
     <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)">Delete <span class="glyphicon glyphicon-remove"></span></a>
-    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClicked = true">Snooze <span class="glyphicon glyphicon-time"></span></a>
+    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClick()">Snooze <span class="glyphicon glyphicon-time"></span></a>
     <!-- If the snooze button is press, display  -->
     <div class= "snoozePress" ng-show="snoozeClicked">
     <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 hour')">1 hour</a>
@@ -39,7 +39,7 @@
   <ul>
     <li ng-repeat="x in todoItems | filter: filterSnooze">
       <p ng-mouseover="snoozeHover">{{x.item}}{{x.snoozeTime}}</p>
-      <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)">Re-activate <span class="glyphicon glyphicon-ok"></span></a>
+      <a class="btn btn-xs btn-success" ng-href="#/" ng-click="reactivateTodo($index)">Re-activate <span class="glyphicon glyphicon-ok"></span></a>
     </li>
   </ul>
 </div>

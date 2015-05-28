@@ -18,6 +18,7 @@ angular.module('yoTestApp')
 	    $scope.todoItems = [];
 	    $scope.todosCompleted = 0;
 	    $scope.snoozeClicked = false;
+	    $scope.snoozed = 0;
 	    initNewItem();
     }
     function initNewItem(){
@@ -39,9 +40,21 @@ angular.module('yoTestApp')
     };
     $scope.snoozeTodo = function(todoIndex, time){
     	$scope.todoItems[todoIndex].snoozeTime = time;
-    	console.log($scope.todoItems[todoIndex].snoozeTime);
-    	$scope.snoozeClicked = false;
+    	$scope.snoozed++;
     };
+    $scope.reactivateTodo = function(todoIndex){
+    	$scope.todoItems[todoIndex].snoozeTime = '';
+    	$scope.snoozed--;
+    };
+    
+    $scope.snoozeClick = function(){
+    	if ($scope.snoozeClicked == false){
+    		$scope.snoozeClicked = true;
+    	} else{
+    		$scope.snoozeClicked = false;
+    	}
+    };
+    
     //filters
     $scope.filterCompleted = function(item){
     	return item.completed === true;
