@@ -44,12 +44,12 @@ angular.module('yoTestApp')
     	$scope.snoozed++;
     };
     $scope.reactivateTodo = function(todoIndex){
+    	console.log(todoIndex);
     	$scope.todoItems[todoIndex].snoozeTime = '';
     	$scope.snoozed--;
     };
     
     $scope.snoozeClick = function(todoIndex){
-    	console.log('snooze clicked');
     	if ($scope.todoItems[todoIndex].snoozeClicked === false){
     		$scope.todoItems[todoIndex].snoozeClicked = true;
     	} else{
