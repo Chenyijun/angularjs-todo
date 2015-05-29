@@ -38,8 +38,11 @@
   <h3>Snoozed Todos</h3>
   <ul>
     <li ng-repeat="x in todoItems" ng-show="filterSnooze(x)">
-      <p ng-mouseover="snoozeHover">{{x.item}}{{x.snoozeTime}}</p>
-      <a class="btn btn-xs btn-success" ng-href="#/" ng-click="reactivateTodo($index)">Re-activate <span class="glyphicon glyphicon-ok"></span></a>
+       <p ng-mouseenter="activateHover($index)" 
+          ng-mouseleave="deactivateHover($index)"> 
+        {{x.item}}  {{x.snoozeTime}}
+      </p>
+      <a class="btn btn-xs btn-success" ng-href="#/" ng-click="reactivateTodo($index)" ng-show= "x.isHovered">Re-activate <span class="glyphicon glyphicon-ok"></span></a>
     </li>
   </ul>
 </div>

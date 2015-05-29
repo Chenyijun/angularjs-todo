@@ -18,11 +18,13 @@ angular.module('yoTestApp')
 	    $scope.todoItems = [];
 	    $scope.todosCompleted = 0;
 	    $scope.snoozed = 0;
-	    // $scope.snoozeClicked = false;
 	    initNewItem();
     }
     function initNewItem(){
-    	$scope.newItem = {'item': '', 'completed': false, 'snoozeTime': '', 'snoozeClicked': false};
+    	$scope.newItem = {'item': '', 'completed': false, 
+    	'snoozeTime': '', 'snoozeClicked': false,
+    	'isHovered': false
+    	};
     }
     //todo actions
     $scope.addItem = function(){
@@ -44,7 +46,6 @@ angular.module('yoTestApp')
     	$scope.snoozed++;
     };
     $scope.reactivateTodo = function(todoIndex){
-    	console.log(todoIndex);
     	$scope.todoItems[todoIndex].snoozeTime = '';
     	$scope.snoozed--;
     };
@@ -62,6 +63,12 @@ angular.module('yoTestApp')
     	}else{
     		return false;
     	}
+    };
+    $scope.activateHover = function(todoIndex){
+    	$scope.todoItems[todoIndex].isHovered = true;
+    };
+    $scope.deactivateHover = function(todoIndex){
+    	$scope.todoItems[todoIndex].isHovered = false;
     };
     //filters
     $scope.filterCompleted = function(item){
