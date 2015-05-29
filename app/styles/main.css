@@ -64,7 +64,8 @@ li {
 
 /* Annie's classes */
 .btn-right{
-  float: right;
+  text-align: right;
+  padding: 0;
 
 }
 
