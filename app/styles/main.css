@@ -67,10 +67,19 @@ li {
   float: right;
 
 }
+
+.snoozePress{
+  padding-top: 10px;
+  text-align: center;
+}
+
+#snoozeTime{
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
-    max-width: 730px;
+    /*ax-width: 730px;*/
+    max-width: 1000px;
   }
 
   /* Remove the padding we set earlier */

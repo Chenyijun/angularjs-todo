@@ -9,26 +9,27 @@
   </div>
   </form>
 <div class = "row">
-<div class="col-md-4">
-<h3>Todo list</h3>
-<ul class="list-group">
-  <li class= "list-group-item" ng-repeat="x in todoItems" ng-show="filterIncomplete(x)">
-    {{x.item}}
-    <div class = "btn-right">
-      <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)"><span class="glyphicon glyphicon-ok"></span></a>
-      <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)"><span class="glyphicon glyphicon-remove"></span></a>
-      <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClick($index)"><span class="glyphicon glyphicon-time"></span></a>
-    </div>
-    <!-- If the snooze button is press, display  -->
-    <div class= "snoozePress" ng-show="checkSnooze($index)">
-    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 hour')">1 hour</a>
-    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 day')">1 day</a>   
-    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 week')">1 week</a>
-    </div>
-    </ul>
-  </li>
-</ul>
-</div>
+  <div class="col-md-4">
+  <h3>Todo list</h3>
+  <ul class="list-group">
+    <li class= "list-group-item" ng-repeat="x in todoItems" ng-show="filterIncomplete(x)">
+        {{x.item}}
+      <div class = "btn-right">
+        <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)"><span class="glyphicon glyphicon-ok"></span></a>
+        <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)"><span class="glyphicon glyphicon-remove"></span></a>
+        <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClick($index)"><span class="glyphicon glyphicon-time"></span></a>
+      </div>
+      <!-- If the snooze button is press, display  -->
+      <div class= "snoozePress" ng-show="checkSnooze($index)">
+        <span>
+          <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 hour')">1 hour</a>
+          <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 day')">1 day</a>   
+          <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 week')">1 week</a>
+        </span>
+      </div> <!--snoozePress-->
+    </li>
+  </ul>
+</div><!--col-md-4-->
 
 <div class="col-md-4" ng-show="todosCompleted > 0">
   <h3>Finished Todos</h3>
@@ -45,8 +46,10 @@
     <li class= "list-group-item" ng-repeat="x in todoItems" ng-show="filterSnooze(x)">
        <div class="hover" ng-mouseenter="activateHover($index)" 
           ng-mouseleave="deactivateHover($index)"> 
-        {{x.item}}  {{x.snoozeTime}}
-      <a class="btn btn-xs btn-success" ng-href="#/" ng-click="reactivateTodo($index)" ng-show= "x.isHovered">Re-activate <span class="glyphicon glyphicon-ok"></span></a>
+        {{x.item}}  <div id="snoozeTime">{{x.snoozeTime}}</div>
+      <div class = "btn-right">
+        <a class="btn btn-xs btn-success" ng-href="#/" ng-click="reactivateTodo($index)" ng-show= "x.isHovered">Re-activate <span class="glyphicon glyphicon-ok"></span></a>
+      </div>
     </div>
     </li>
   </ul>
