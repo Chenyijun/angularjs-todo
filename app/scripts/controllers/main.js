@@ -17,12 +17,12 @@ angular.module('yoTestApp')
     function init(){
 	    $scope.todoItems = [];
 	    $scope.todosCompleted = 0;
-	    $scope.snoozeClicked = false;
 	    $scope.snoozed = 0;
+	    // $scope.snoozeClicked = false;
 	    initNewItem();
     }
     function initNewItem(){
-    	$scope.newItem = {'item': '', 'completed': false, 'snoozeTime': ''};
+    	$scope.newItem = {'item': '', 'completed': false, 'snoozeTime': '', 'snoozeClicked': false};
     }
     //todo actions
     $scope.addItem = function(){
@@ -40,6 +40,7 @@ angular.module('yoTestApp')
     };
     $scope.snoozeTodo = function(todoIndex, time){
     	$scope.todoItems[todoIndex].snoozeTime = time;
+    	$scope.todoItems[todoIndex].snoozeClicked = false;
     	$scope.snoozed++;
     };
     $scope.reactivateTodo = function(todoIndex){
@@ -47,14 +48,21 @@ angular.module('yoTestApp')
     	$scope.snoozed--;
     };
     
-    $scope.snoozeClick = function(){
-    	if ($scope.snoozeClicked == false){
-    		$scope.snoozeClicked = true;
+    $scope.snoozeClick = function(todoIndex){
+    	console.log('snooze clicked');
+    	if ($scope.todoItems[todoIndex].snoozeClicked === false){
+    		$scope.todoItems[todoIndex].snoozeClicked = true;
     	} else{
-    		$scope.snoozeClicked = false;
+    		$scope.todoItems[todoIndex].snoozeClicked = false;
     	}
     };
-    
+    $scope.checkSnooze = function(todoIndex){
+    	if ($scope.todoItems[todoIndex].snoozeClicked === true){
+    		return true;
+    	}else{
+    		return false;
+    	}
+    };
     //filters
     $scope.filterCompleted = function(item){
     	return item.completed === true;

@@ -14,9 +14,9 @@
     {{x.item}}
     <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)">Done! <span class="glyphicon glyphicon-ok"></span></a>
     <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)">Delete <span class="glyphicon glyphicon-remove"></span></a>
-    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClick()">Snooze <span class="glyphicon glyphicon-time"></span></a>
+    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClick($index)">Snooze <span class="glyphicon glyphicon-time"></span></a>
     <!-- If the snooze button is press, display  -->
-    <div class= "snoozePress" ng-show="snoozeClicked">
+    <div class= "snoozePress" ng-show="checkSnooze($index)">
     <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 hour')">1 hour</a>
     <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 day')">1 day</a>   
     <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 week')">1 week</a>
