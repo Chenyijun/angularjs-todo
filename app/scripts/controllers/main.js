@@ -38,10 +38,7 @@ angular.module('yoTestApp')
     	$scope.todosCompleted++;
     };
     $scope.deleteTodo = function(todoIndex){
-    	console.log('delete has been pressed');
-    	console.log($scope.todoItems.length);
-    	delete $scope.todoItems[todoIndex];
-    	console.log($scope.todoItems.length);
+    	$scope.todoItems.splice(todoIndex,1);
     };
     $scope.snoozeTodo = function(todoIndex, time){
     	$scope.todoItems[todoIndex].snoozeTime = time;
