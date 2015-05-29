@@ -1,20 +1,24 @@
-<div class="jumbotron">
+
   <h1>Todos!</h1>
   <form ng-submit="addItem()">
-    <input type="text" ng-model="newItem.item" name="item"/>
-    <!-- ng-disabled="saving" -->
-    <input type = "submit" id="submit" value="Submit" /> 
+    <div class="input-group">
+    <input type="text" class="form-control" ng-model="newItem.item" name="item" placeholder="Add todos"/>
+    <span class="input-group-btn">
+      <button class="btn btn-default" type ="submit">+</button>
+    </span>
+  </div>
   </form>
-</div>
-
-<div class="todoList">
+<div class = "row">
+<div class="col-md-4">
 <h3>Todo list</h3>
-<ul>
-  <li ng-repeat="x in todoItems" ng-show="filterIncomplete(x)">
+<ul class="list-group">
+  <li class= "list-group-item" ng-repeat="x in todoItems" ng-show="filterIncomplete(x)">
     {{x.item}}
-    <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)">Done! <span class="glyphicon glyphicon-ok"></span></a>
-    <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)">Delete <span class="glyphicon glyphicon-remove"></span></a>
-    <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClick($index)">Snooze <span class="glyphicon glyphicon-time"></span></a>
+    <div class = "btn-right">
+      <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)"><span class="glyphicon glyphicon-ok"></span></a>
+      <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)"><span class="glyphicon glyphicon-remove"></span></a>
+      <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeClick($index)"><span class="glyphicon glyphicon-time"></span></a>
+    </div>
     <!-- If the snooze button is press, display  -->
     <div class= "snoozePress" ng-show="checkSnooze($index)">
     <a class="btn btn-xs btn-info" ng-href="#/" ng-click="snoozeTodo($index, '1 hour')">1 hour</a>
@@ -24,20 +28,21 @@
     </ul>
   </li>
 </ul>
+</div>
 
-<div class="finishedList" ng-show="todosCompleted > 0">
+<div class="col-md-4" ng-show="todosCompleted > 0">
   <h3>Finished Todos</h3>
-  <ul>
-    <li ng-repeat="x in todoItems" ng-show="filterCompleted(x)">
+  <ul class="list-group">
+    <li class= "list-group-item" ng-repeat="x in todoItems" ng-show="filterCompleted(x)">
       {{x.item}}
     </li>
   </ul>
 </div>
 
-<div class="snoozedList" ng-show="snoozed > 0">
+<div class="col-md-4" ng-show="snoozed > 0">
   <h3>Snoozed Todos</h3>
-  <ul>
-    <li ng-repeat="x in todoItems" ng-show="filterSnooze(x)">
+  <ul class="list-group">
+    <li class= "list-group-item" ng-repeat="x in todoItems" ng-show="filterSnooze(x)">
        <div class="hover" ng-mouseenter="activateHover($index)" 
           ng-mouseleave="deactivateHover($index)"> 
         {{x.item}}  {{x.snoozeTime}}
@@ -45,4 +50,5 @@
     </div>
     </li>
   </ul>
+</div>
 </div>
