@@ -1,11 +1,3 @@
-<script src="bower_components/jquery/dist/jquery.min.js"></script>
-<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
-<script>
-  $(function() {
-    $( ".sortable" ).sortable();
-    $( ".sortable" ).disableSelection();
-  });
-</script>
 
   <form ng-submit="addItem()">
     <div class="input-group">
@@ -42,16 +34,7 @@
   </ul>
 </div><!--col-md-4-->
 
-<div class="col-md-4" > <!-- ng-show="todosCompleted > 0" -->
-  <h3>Finished Todos</h3>
-  <ul class="list-group">
-    <li class= "list-group-item wordWrap" ng-repeat="x in todoItems" ng-show="filterCompleted(x)">
-      {{x.item}}
-    </li>
-  </ul>
-</div>
-
-<div class="col-md-4">  <!-- ng-show="snoozed > 0" -->
+<div class="col-md-4">  <!-- only show col when its not empty, ng-show="snoozed > 0" -->
   <h3>Snoozed Todos</h3>
   <ul class="list-group">
     <li class= "list-group-item" ng-repeat="x in todoItems" ng-show="filterSnooze(x)">
@@ -70,4 +53,24 @@
     </li>
   </ul>
 </div>
+
+<div class="col-md-4" > <!-- only show col when its not empty, ng-show="todosCompleted > 0" -->
+  <h3>Finished Todos</h3>
+  <ul class="list-group">
+    <li class= "list-group-item wordWrap" ng-repeat="x in todoItems" ng-show="filterCompleted(x)">
+      {{x.item}}
+    </li>
+  </ul>
 </div>
+
+
+</div>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script>
+  $(function() {
+    $( ".sortable" ).sortable();
+    $( ".sortable" ).disableSelection();
+  });
+</script>
