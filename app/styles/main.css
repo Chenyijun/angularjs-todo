@@ -70,7 +70,7 @@ li {
 }
 
 .snoozePress{
-  padding-top: 10px;
+  padding-top: 20px;
   text-align: center;
 }
 
@@ -81,7 +81,6 @@ li {
 .wordWrap{
   word-wrap: break-word;
 }
-/* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {
     /*ax-width: 730px;*/
