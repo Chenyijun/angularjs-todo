@@ -7,8 +7,8 @@
  * # MainCtrl
  * Controller of the yoTestApp
  */
-angular.module('yoTestApp')
-  .controller('MainCtrl', function ($scope) {
+var testApp = angular.module('yoTestApp');
+testApp.controller('MainCtrl', function ($scope) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
@@ -19,12 +19,13 @@ angular.module('yoTestApp')
 	    $scope.todosCompleted = 0;
 	    $scope.snoozed = 0;
 	    $scope.isClicked = false;
+	    $scope.editedItem = null;
 	    initNewItem();
     }
     function initNewItem(){
     	$scope.newItem = {'item': '', 'completed': false, 
     	'snoozeTime': '', 'snoozeClicked': false,
-    	'isHovered': false
+    	'isHovered': false, 'editing': false
     	};
     }
     //todo actions
@@ -74,6 +75,19 @@ angular.module('yoTestApp')
 			$scope.todoItems[todoIndex].snoozeClicked = false;
     	}
     };
+
+    $scope.startEditing = function(todo){
+        todo.editing=true;
+        $scope.editedItem = todo;
+        console.log('start editing'+todo.item);
+    };
+        
+    $scope.doneEditing = function(todo){
+        todo.editing=false;
+        $scope.editedItem = null;
+        console.log('end editing'+todo.item);
+
+    };
     //filters
     $scope.filterCompleted = function(item){
     	return item.completed === true;
@@ -86,3 +100,4 @@ angular.module('yoTestApp')
     };
     init();
   });
+

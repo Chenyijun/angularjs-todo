@@ -11,11 +11,12 @@
   <div class="col-md-4">
   <h3>Todo list</h3>
   <ul class="list-group sortable">
-    <li class= "list-group-item ui-state-default" ng-repeat="x in todoItems" ng-show="filterIncomplete(x)">
+    <li class= "list-group-item ui-state-default" ng-repeat="x in todoItems" ng-show="filterIncomplete(x)" ng-dblclick="startEditing(x)">
       <div class="row" ng-mouseenter="activateHover($index)" ng-mouseleave="deactivateHover($index)">
-        <div class="col-sm-8 wordWrap">
+        <div class="col-sm-8 wordWrap" ng-hide="x.editing">
           {{x.item}}
         </div>
+          <input ng-show="x.editing" ng-model="x.item" ng-blur="doneEditing(x)" autofocus/> 
         <span class = "btn-right" ng-show= "x.isHovered"> 
           <a class="btn btn-xs btn-success" ng-href="#/" ng-click="completeTodo(x)"><span class="glyphicon glyphicon-ok"></span></a>
           <a class="btn btn-xs btn-danger" ng-href="#/" ng-click="deleteTodo($index)"><span class="glyphicon glyphicon-remove"></span></a>
