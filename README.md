@@ -1,3 +1,5 @@
+This is project is to practice using angularjs.
+
 # yo-test
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
